@@ -92,7 +92,7 @@
         event.preventDefault();
 
         /* toggle active class on element of thisProduct */
-        thisProduct.element.classList.toggle('active');
+        clickableTrigger.classList.toggle('active');
 
         /* find all active products */
         const activeProducts = document.querySelectorAll('.active');
