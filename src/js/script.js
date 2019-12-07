@@ -185,12 +185,6 @@
             console.log('price raised by: ', option.price);
 
             /* END IF condition: if option is selected and option is not default */
-//
-// to trzeba gdzieś umieścić żeby nie leciał undefined
-//
-//
-            // thisProduct.priceElem.innerHTML = thisProduct.price;
-            // console.log('total price: ', price);
           }
 
           /* START ELSE IF: if option is not selected and option is default */
@@ -199,7 +193,8 @@
             price = price - option.price;
             console.log('price reduced: ', option.price);
           }
-
+          thisProduct.priceElem.innerHTML = price;
+          console.log('total price: ', price);
         }
 
       }
