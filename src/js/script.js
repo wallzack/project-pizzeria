@@ -160,7 +160,7 @@
 
       /* set variable price to equal thisProduct.data.price */
       let price = thisProduct.data.price;
-      console.log('Product whole price: ', price);
+      console.log('Product initial price: ', price);
 
       /* START LOOP: for each paramId in thisProduct.data.params */
       for (let paramId in thisProduct.data.params){
@@ -176,25 +176,32 @@
 
           /*  START IF condition: if option is selected and option is not default */
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
-          console.log('option selected: ', optionSelected);
+          //console.log('option selected: ', optionSelected);
 
           if(optionSelected && !option.default){
 
             /* add price of option to variable price */
             price = price + option.price;
-            console.log('price: ', price);
+            console.log('price raised by: ', option.price);
 
             /* END IF condition: if option is selected and option is not default */
+//
+// to trzeba gdzieś umieścić żeby nie leciał undefined
+//
+//
+            // thisProduct.priceElem.innerHTML = thisProduct.price;
+            // console.log('total price: ', price);
           }
 
           /* START ELSE IF: if option is not selected and option is default */
           else if (!optionSelected && option.default){
             /* deduct price of option from price */
             price = price - option.price;
-            console.log('price deducted: ', price);
-          
+            console.log('price reduced: ', option.price);
           }
+
         }
+
       }
 
     }
