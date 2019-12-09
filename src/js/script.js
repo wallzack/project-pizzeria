@@ -89,6 +89,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -186,7 +187,6 @@
 
             /* END IF condition: if option is selected and option is not default */
           }
-
           /* START ELSE IF: if option is not selected and option is default */
           else if (!optionSelected && option.default){
             /* deduct price of option from price */
@@ -195,12 +195,33 @@
           }
           thisProduct.priceElem.innerHTML = price;
           console.log('total price: ', price);
+
+          /* create const to store matching elements */
+          const images = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
+
+          /* START IF condition for adding images for selected options */
+          if(optionSelected) {
+            if(!thisProduct.params[paramId]) {
+              thisProduct.params[paramId] = {
+                label: param.label,
+                options: {},
+              }
+            }
+            thisProduct.params[paramId].options[optionId] = option.label;
+            for (let image of images) {
+              image.classList.add(classNames.menuProduct.imageVisible);
+            }
+          }
+
+          /* START ELSE condition for removing images for deselected options */
+          else {
+            for (let image of images) {
+              image.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          }
         }
-
       }
-
     }
-
   }
 
   const app = {
