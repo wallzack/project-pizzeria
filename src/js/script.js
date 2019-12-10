@@ -238,6 +238,7 @@
       const thisWidget = this;
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value);
+      thisWidget.initActions();
 
       console.log('AmoundWidget: ', thisWidget);
       console.log('constructor argument: ', element);
@@ -268,7 +269,7 @@
       const thisWidget = this;
 
       thisWidget.input.addEventListener('change', function(){
-        thisWidget.setValue = thisWidget.input.value;
+        thisWidget.setValue(thisWidget.input.value);
       });
       thisWidget.linkDecrease.addEventListener('click', function(){
         event.preventDefault();
