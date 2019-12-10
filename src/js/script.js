@@ -63,7 +63,7 @@
       thisProduct.initOrderForm();
       thisProduct.initAmountWidget();
       thisProduct.processOrder();
-      console.log('new Product:', thisProduct);
+      // console.log('new Product:', thisProduct);
     }
 
     renderInMenu(){
@@ -151,11 +151,7 @@
 
     }
 
-    initAmountWidget(){
-      const thisProduct = this;
 
-      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-    }
 
     processOrder(){
       const thisProduct = this;
@@ -201,6 +197,9 @@
             price = price - option.price;
             // console.log('price reduced: ', option.price);
           }
+          /* multiply price by amount */
+          price *= thisProduct.amountWidget.value;
+
           thisProduct.priceElem.innerHTML = price;
           console.log('total price: ', price);
 
@@ -230,6 +229,16 @@
         }
       }
     }
+
+    initAmountWidget(){
+      const thisProduct = this;
+
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function(){
+        thisProduct.processOrder();
+      });
+    }
+
   }
 
   /* add class for amount calculations */
@@ -240,8 +249,8 @@
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
 
-      console.log('AmoundWidget: ', thisWidget);
-      console.log('constructor argument: ', element);
+      // console.log('AmoundWidget: ', thisWidget);
+      // console.log('constructor argument: ', element);
     }
 
     getElements(element){
@@ -262,6 +271,7 @@
       /* TODO: Add validation */
 
       thisWidget.value = newValue;
+      thisWidget.announce();
       thisWidget.input.value = thisWidget.value;
     }
 
@@ -279,6 +289,13 @@
         event.preventDefault();
         thisWidget.setValue(thisWidget.value + 1);
       });
+    }
+
+    announce(){
+      const thisWidget = this;
+
+      const event = new Event('updated');
+      thisWidget.element.dispatchEvent(event);
     }
   }
 
@@ -300,11 +317,11 @@
 
     init: function(){
       const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
+      // console.log('*** App starting ***');
+      // console.log('thisApp:', thisApp);
+      // console.log('classNames:', classNames);
+      // console.log('settings:', settings);
+      // console.log('templates:', templates);
 
       thisApp.initData();
       thisApp.initMenu();
