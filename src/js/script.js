@@ -2,7 +2,7 @@
 
 {
   'use strict';
-
+  
   const select = {
     templateOf: {
       menuProduct: '#template-menu-product',
@@ -195,13 +195,15 @@
           else if (!optionSelected && option.default){
             /* deduct price of option from price */
             price = price - option.price;
+            
             // console.log('price reduced: ', option.price);
           }
           /* multiply price by amount */
           price *= thisProduct.amountWidget.value;
-
-          thisProduct.priceElem.innerHTML = price;
           console.log('total price: ', price);
+          // console.log('amount: ', thisProduct.amountWidget.value);
+          thisProduct.priceElem.innerHTML = price;
+          console.trace();
 
           /* create const to store matching elements */
           const images = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
@@ -238,8 +240,9 @@
         thisProduct.processOrder();
       });
     }
-
+    
   }
+  
 
   /* add class for amount calculations */
   class AmountWidget{
@@ -249,7 +252,7 @@
       thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
-
+      // console.trace()
       // console.log('AmoundWidget: ', thisWidget);
       // console.log('constructor argument: ', element);
     }
@@ -272,8 +275,8 @@
       /* TODO: Add validation */
 
       if (newValue != thisWidget.value && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax){
-      thisWidget.value = newValue;
-      thisWidget.announce();
+        thisWidget.value = newValue;
+        thisWidget.announce();
       }
       thisWidget.input.value = thisWidget.value;
     }
