@@ -2,7 +2,7 @@
 
 {
   'use strict';
-  
+
   const select = {
     templateOf: {
       menuProduct: '#template-menu-product',
@@ -195,14 +195,14 @@
           else if (!optionSelected && option.default){
             /* deduct price of option from price */
             price = price - option.price;
-            
+
             // console.log('price reduced: ', option.price);
           }
           /* multiply price by amount */
-          price *= thisProduct.amountWidget.value;
-          console.log('total price: ', price);
+          // price *= thisProduct.amountWidget.value;
+          // console.log('total price: ', price);
           // console.log('amount: ', thisProduct.amountWidget.value);
-          thisProduct.priceElem.innerHTML = price;
+          // thisProduct.priceElem.innerHTML = price;
           console.trace();
 
           /* create const to store matching elements */
@@ -230,6 +230,8 @@
           }
         }
       }
+      price *= thisProduct.amountWidget.value;
+      thisProduct.priceElem.innerHTML = price;
     }
 
     initAmountWidget(){
@@ -240,9 +242,9 @@
         thisProduct.processOrder();
       });
     }
-    
+
   }
-  
+
 
   /* add class for amount calculations */
   class AmountWidget{
