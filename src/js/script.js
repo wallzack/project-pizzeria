@@ -182,11 +182,10 @@
       thisProduct.cartButton.addEventListener('click', function(event){
         event.preventDefault();
         thisProduct.processOrder();
+        thisProduct.addToCart();
       });
 
     }
-
-
 
     processOrder(){
       const thisProduct = this;
@@ -265,9 +264,18 @@
           }
         }
       }
-      price *= thisProduct.amountWidget.value;
-      thisProduct.priceElem.innerHTML = price;
+      /* multiply price by amount */
+      // price *= thisProduct.amountWidget.value; //zmiana w module 9.3 na:
+      thisProduct.priceSingle = price;
+      thisProduct.price = thisProduct.priceSingle * thisProduct.amountWidget.value;
+
+
+      /* set the contents of thisProduct.priceElem to be the value of variable price */
+      // thisProduct.priceElem.innerHTML = price; //zmiana w module 9.3 na:
+      thisProduct.priceElem.innerHTML = thisProduct.price;
+      console.log('Product params: ', thisProduct.params);
     }
+    
 
     initAmountWidget(){
       const thisProduct = this;
@@ -278,6 +286,14 @@
       });
     }
 
+    addToCart(){
+      const thisProduct = this;
+
+      thisProduct.name = thisProduct.data.name;
+      thisProduct.amount = thisProduct.amountWidget.value;
+
+      app.cart.add(thisProduct);
+    }
   }
 
 
@@ -360,16 +376,33 @@
 
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
 
     }
+
     initActions(){
       const thisCart = this;
       thisCart.dom.toggleTrigger.addEventListener('click', function(){
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
     }
+
+    add(menuProduct){
+      const thisCart = this;
+
+      /* generate HTML based on template */
+      const generatedHTML = templates.cartProduct(menuProduct);
+
+      /* create DOM element */
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+
+      /* add DOM elements to product list */
+      thisCart.dom.productList.appendChild(generatedDOM);
+      
+      // console.log('adding product: ', menuProduct);
+    }
   }
-  
+
   const app = {
     initMenu: function(){
       const thisApp = this;
