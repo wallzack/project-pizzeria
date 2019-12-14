@@ -232,13 +232,7 @@
 
             // console.log('price reduced: ', option.price);
           }
-          /* multiply price by amount */
-          // price *= thisProduct.amountWidget.value;
-          // console.log('total price: ', price);
-          // console.log('amount: ', thisProduct.amountWidget.value);
-          // thisProduct.priceElem.innerHTML = price;
-          // console.trace();
-
+          
           /* create const to store matching elements */
           const images = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
 
