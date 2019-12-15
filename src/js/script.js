@@ -441,10 +441,10 @@
     remove(cartProduct){
       const thisCart = this;
       const index = thisCart.products.indexOf(cartProduct);
-      // console.log('index', index);
+      console.log('index', index);
 
       const delElem = thisCart.products.splice(cartProduct, 1);
-      // console.log('del', delElem);
+      console.log('del', delElem);
 
       cartProduct.dom.wrapper.remove();
       thisCart.update();
@@ -559,7 +559,7 @@
           /* execute initMenu method */
           thisApp.initMenu();
         });
-    console.log('thisApp.data', JSON.stringify(thisApp.data));
+      console.log('thisApp.data', JSON.stringify(thisApp.data));
     },
 
     init: function(){
