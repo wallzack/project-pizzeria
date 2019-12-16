@@ -417,9 +417,9 @@
         subtotalPrice: thisCart.subtotalPrice,
         deliveryFee: thisCart.deliveryFee,
         products: [],
-        
+
       };
-      
+
       for(let product of thisCart.products){
         payload.products.push(product.getData());
       }
@@ -438,8 +438,8 @@
         }).then(function(parsedResponse){
           console.log('parsedResponse', parsedResponse);
         });
-    };
-    
+    }
+
 
     add(menuProduct){
       const thisCart = this;
@@ -575,7 +575,8 @@
           priceSingle: thisCartProduct.priceSingle,
           params: thisCartProduct.params,
         }
-      }
+      };
+      return productAddedData;
     }
   }
 
