@@ -12,13 +12,13 @@ const app = {
 
 
     const idFromHash = window.location.hash.replace('#/', '');
-    console.log('idFromHash', idFromHash);
+    // console.log('idFromHash', idFromHash);
 
     let pageMatchingHash = thisApp.pages[0].id;
 
     for(let page of thisApp.pages){
       if(page.id == idFromHash){
-        pageMatchingHash == page.id;
+        pageMatchingHash = page.id;
         break;
       }
     }
