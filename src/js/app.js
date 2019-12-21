@@ -1,9 +1,18 @@
 import{settings, select, classNames} from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
+import Booking from './components/Booking.js';
 
 
 const app = {
+
+  initBooking: function(){
+    const thisApp = this;
+    const bookingWidget = document.querySelector(select.containerOf.booking);
+
+    thisApp.booking = new Booking(bookingWidget);
+  },
+
   initPages: function(){
     const thisApp = this;
 
@@ -117,6 +126,8 @@ const app = {
     thisApp.initData();
     // thisApp.initMenu(); //deleted in module 9.7
     thisApp.initCart();
+
+    thisApp.initBooking();
   },
 };
 
