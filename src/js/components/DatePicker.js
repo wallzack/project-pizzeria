@@ -1,8 +1,9 @@
+
 import {select, settings} from '../settings.js';
 import {utils} from '../utils.js';
-import BaseWidget from './BaseWidget';
+import BaseWidget from './BaseWidget.js';
 
-class DatePicker extends BaseWidget(){
+class DatePicker extends BaseWidget{
   constructor(wrapper){
     super(wrapper, utils.dateToStr(new Date()));
     const thisWidget = this;
@@ -41,8 +42,8 @@ class DatePicker extends BaseWidget(){
     return true;
   }
 
-  renderValue(){
-    // return null;
-  }
+//   renderValue(){
+//     return null;
+//   }
 }
 export default DatePicker;
