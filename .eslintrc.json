@@ -29,5 +29,12 @@
         "no-console": [
             "off"
         ]
-    }
+    },
+    
+    "globals": {
+        "flatpickr": false,
+        "rangeSlider": false
+      }
+
+    
 }
