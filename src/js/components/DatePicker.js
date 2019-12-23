@@ -8,7 +8,7 @@ class DatePicker extends BaseWidget{
     super(wrapper, utils.dateToStr(new Date()));
     const thisWidget = this;
     thisWidget.dom.input = thisWidget.dom.wrapper.queryselector(select.widgets.datePicker.input);
-    console.log('thisWidget.dom.input', thisWidget.dom.input);
+    // console.log('thisWidget.dom.input', thisWidget.dom.input);
     thisWidget.initPlugin();
   }
 
@@ -16,7 +16,7 @@ class DatePicker extends BaseWidget{
     const thisWidget = this;
     thisWidget.minDate = new Date(thisWidget.value);
     thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture);
-    
+
     flatpickr(thisWidget.dom.input, {
       defaultDate: thisWidget.minDate,
       minDate: thisWidget.minDate,
@@ -43,8 +43,8 @@ class DatePicker extends BaseWidget{
     return true;
   }
 
-//   renderValue(){
+  renderValue(){
 //     return null;
-//   }
+  }
 }
 export default DatePicker;
