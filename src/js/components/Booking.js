@@ -1,4 +1,5 @@
-import {select, templates} from '../settings.js';
+import {select, templates, settings} from '../settings.js';
+import {utils} from '../utils.js';
 import AmountWidget from './AmountWidget.js';
 import DatePicker from './DatePicker.js';
 import HourPicker from './HourPicker.js';
@@ -9,6 +10,61 @@ class Booking {
 
     thisBooking.render(bookingWidget);
     thisBooking.initWidgets();
+    thisBooking.getData();
+  }
+
+  getData(){
+    const thisBooking = this;
+
+    const startDateParam = settings.db.dateStartParamKey + '=' + utils.dateToStr(thisBooking.datePicker.minDate);
+    const endDateParam = settings.db.dateEndParamKey + '=' + utils.dateToStr(thisBooking.datePicker.maxDate);
+
+
+    const params = {
+      booking: [
+        startDateParam,
+        endDateParam,
+
+      ],
+      eventsCurrent: [
+        settings.db.notRepeatParam,
+        startDateParam,
+        endDateParam,
+      ],
+      eventsRepeat: [
+        settings.db.repeatParam,
+        endDateParam,
+      ],
+    };
+    // console.log('getData params', params);
+
+    const urls = {
+      booking:        settings.db.url + '/' + settings.db.booking  + '?' + params.booking.join('&'),
+      eventsCurrent:  settings.db.url + '/' + settings.db.event    + '?' + params.eventsCurrent.join('&'),
+      eventsRepeat:   settings.db.url + '/' + settings.db.event    + '?' + params.eventsRepeat.join('&'),
+    };
+    console.log('Urls', urls);
+
+    Promise.all([
+      fetch(urls.booking),
+      fetch(urls.eventsCurrent),
+      fetch(urls.eventsRepeat),
+    ])
+      .then(function(allResponses){
+        const bookingsResponse = allResponses[0];
+        const eventsCurrentResponse = allResponses[1];
+        const eventsRepeatResponse = allResponses[2];
+        return Promise.all([
+          bookingsResponse.json(),
+          eventsCurrentResponse.json(),
+          eventsRepeatResponse.json(),
+        ]);
+      })
+      .then(function([bookings, eventsCurrent, eventsRepeat]){
+        console.log('booking', bookings);
+        console.log('one time event', eventsCurrent);
+        console.log('cycle event', eventsRepeat);
+      });
   }
 
   render(element){
