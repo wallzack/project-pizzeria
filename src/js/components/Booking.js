@@ -120,10 +120,10 @@ class Booking {
   pickTable() {
     const thisBooking = this;
 
-    for (let table of thisBooking.dom.tables) {
-      table.addEventListener('click', function () {
+    for (let table of thisBooking.dom.tables){
+      table.addEventListener('click', function(){
 
-        table.classList.toggle('booked');
+        table.classList.toggle(classNames.booking.tableBooked);
         thisBooking.tableId = table.getAttribute(settings.booking.tableIdAttribute);
 
       });
@@ -155,7 +155,7 @@ class Booking {
     }
 
     for (let table of thisBooking.dom.tables) {
-      if (table.classList.contains('booked')) {
+      if (table.classList.contains(classNames.booking.tableBooked)) {
         thisBooking.tableId = table.getAttribute(settings.booking.tableIdAttribute);
 
         if (!isNaN(thisBooking.tableId)) {
