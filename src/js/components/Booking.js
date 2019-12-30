@@ -123,7 +123,7 @@ class Booking {
     for (let table of thisBooking.dom.tables) {
       table.addEventListener('click', function () {
 
-        table.classList.toggle('selected');
+        table.classList.toggle('booked');
         thisBooking.tableId = table.getAttribute(settings.booking.tableIdAttribute);
 
       });
@@ -131,7 +131,7 @@ class Booking {
 
   }
 
-  sendBooked() {
+  sendBooked(){
 
     const thisBooking = this;
     // console.log(thisBooking.booked);
@@ -154,11 +154,10 @@ class Booking {
       }
     }
 
-    for (let table of this.dom.tables) {
-      if (table.classList.contains('selected')) {
+    for (let table of thisBooking.dom.tables) {
+      if (table.classList.contains('booked')) {
         thisBooking.tableId = table.getAttribute(settings.booking.tableIdAttribute);
-        table.classList.add('booked');
-        table.classList.remove('selected');
+
         if (!isNaN(thisBooking.tableId)) {
           thisBooking.tableId = parseInt(thisBooking.tableId);
         }
