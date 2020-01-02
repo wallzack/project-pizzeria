@@ -2,7 +2,7 @@ import {settings, select, classNames} from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
-import Home from './components/Home.js';
+// import Home from './components/Home.js';
 
 
 const app = {
@@ -114,58 +114,58 @@ const app = {
     // console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
 
-  initHome: function(){
-    const thisApp = this;
+  // initHome: function(){
+  //   const thisApp = this;
 
-    thisApp.pages = document.querySelector(select.containerOf.pages).children;
-    thisApp.homeLinks = document.querySelectorAll(select.home.links);
+  //   thisApp.pages = document.querySelector(select.containerOf.pages).children;
+  //   thisApp.homeLinks = document.querySelectorAll(select.home.links);
 
-    const idFromHash = window.location.hash.replace('#/', '');
-    // console.log('idFromHash', idFromHash);
+  //   const idFromHash = window.location.hash.replace('#/', '');
+  //   // console.log('idFromHash', idFromHash);
 
-    let pageMatchingHash = thisApp.pages[0].id;
+  //   let pageMatchingHash = thisApp.pages[0].id;
 
-    for(let page of thisApp.pages){
-      if(page.id == idFromHash){
-        pageMatchingHash = page.id;
-        break;
-      }
-    }
+  //   for(let page of thisApp.pages){
+  //     if(page.id == idFromHash){
+  //       pageMatchingHash = page.id;
+  //       break;
+  //     }
+  //   }
 
-    thisApp.activatePageLinks(pageMatchingHash);
+  //   thisApp.activatePageLinks(pageMatchingHash);
 
-    for(let link of thisApp.homeLinks){
-      link.addEventListener('click', function(event){
-        const clickedElement = this;
-        event.preventDefault();
+  //   for(let link of thisApp.homeLinks){
+  //     link.addEventListener('click', function(event){
+  //       const clickedElement = this;
+  //       event.preventDefault();
 
-        /* get page id from href attribute */
-        const id = clickedElement.getAttribute('href').replace('#', '');
+  //       /* get page id from href attribute */
+  //       const id = clickedElement.getAttribute('href').replace('#', '');
 
-        /* run thisApp.activatePageLinks with this id */
-        thisApp.activatePageLinks(id);
+  //       /* run thisApp.activatePageLinks with this id */
+  //       thisApp.activatePageLinks(id);
 
-        /* change URL hash */
-        window.location.hash = '#/' + id;
-      });
-    }
-  },
+  //       /* change URL hash */
+  //       window.location.hash = '#/' + id;
+  //     });
+  //   }
+  // },
 
-  activatePageLinks: function(pageId){
-    const thisApp = this;
+  // activatePageLinks: function(pageId){
+  //   const thisApp = this;
 
-    /* add classs "active" to matching pages, remove from non-matching */
-    for(let page of thisApp.pages){
-      page.classList.toggle(classNames.pages.active, page.id == pageId);
-    }
-    /* add classs "active" to matching links, remove from non-matching */
-    for(let link of thisApp.homeLinks){
-      link.classList.toggle(
-        classNames.home.active,
-        link.getAttribute('href') == '#' + pageId
-      );
-    }
-  },
+  //   /* add classs "active" to matching pages, remove from non-matching */
+  //   for(let page of thisApp.pages){
+  //     page.classList.toggle(classNames.pages.active, page.id == pageId);
+  //   }
+  //   /* add classs "active" to matching links, remove from non-matching */
+  //   for(let link of thisApp.homeLinks){
+  //     link.classList.toggle(
+  //       classNames.home.active,
+  //       link.getAttribute('href') == '#' + pageId
+  //     );
+  //   }
+  // },
 
   // initCarousel() {
   //   // eslint-disable-next-line no-unused-vars
@@ -248,7 +248,7 @@ const app = {
 
     // thisApp.initCarousel();
 
-    thisApp.initHome();
+    // thisApp.initHome();
   },
 };
 

@@ -71,12 +71,12 @@ export const select = {
     starters: '[name="starter"]',
   },
   nav: {
-    links: '.main-nav a',
+    links: '.links-active a',
   },
 
-  home: {
-    links: '.home-links a',
-  },
+  // home: {
+  //   links: '.home-links a',
+  // },
 };
 
 export const classNames = {
@@ -139,5 +139,5 @@ export const templates = {
   menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
-  
+
 };
