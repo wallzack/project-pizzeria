@@ -43,7 +43,6 @@ export const select = {
       output: '.output',
     },
   },
-  // CODE ADDED START
   cart: {
     productList: '.cart__order-summary',
     toggleTrigger: '.cart__summary',
@@ -94,6 +93,9 @@ export const classNames = {
     tableBooked: 'booked',
   },
   nav: {
+    active: 'active',
+  },
+  home: {
     active: 'active',
   },
   pages: {
