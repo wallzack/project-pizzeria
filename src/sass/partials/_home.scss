@@ -13,7 +13,7 @@
   text-align: center;
 }
 
-.home-buttons {
+.home-links {
   flex-basis: 49.5%;
   position: relative;
   overflow: hidden;
@@ -52,7 +52,7 @@
 
 }
 
-.home-buttons:hover {
+.home-links:hover {
   a {
     top: 10%;
   }
@@ -115,12 +115,12 @@
   width: 12px;
 }
 
-.break-caro {
+.break-carousel {
   flex-basis: 100%;
   height: 92px;
 }
 
-.break-galo {
+.break-gallery {
   flex-basis: 100%;
   height: 80px;
 }
