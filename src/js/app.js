@@ -114,121 +114,69 @@ const app = {
     // console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
 
-  // initHome: function(){
-  //   const thisApp = this;
+ 
+  initCarousel() {
+    // eslint-disable-next-line no-unused-vars
+    const thisApp = this;
+    const review = [];
 
-  //   thisApp.pages = document.querySelector(select.containerOf.pages).children;
-  //   thisApp.homeLinks = document.querySelectorAll(select.home.links);
+    review[0] = {
+      title: 'Bombastico pizza',
+      content: 'Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      author: 'Zenon M.',
 
-  //   const idFromHash = window.location.hash.replace('#/', '');
-  //   // console.log('idFromHash', idFromHash);
+    };
+    review[1] = {
+      title: 'Fantastico',
+      content: 'Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet',
+      author: 'Maryla R.',
+    };
+    review[2] = {
+      title: 'Szok i niedowierzanie',
+      content: 'Mauris maximus ipsuLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametm sed.',
+      author: 'Krzysztof K.',
+    };
+    let i = 0;
+    // console.log(review[0]);
+    console.log(review);
 
-  //   let pageMatchingHash = thisApp.pages[0].id;
+    const dots = document.querySelectorAll('.carousel-dots i');
+    console.log(dots);
 
-  //   for(let page of thisApp.pages){
-  //     if(page.id == idFromHash){
-  //       pageMatchingHash = page.id;
-  //       break;
-  //     }
-  //   }
+    function changeTitle() {
 
-  //   thisApp.activatePageLinks(pageMatchingHash);
+      const title = document.querySelector('.review-title');
+      console.log(title);
+      const content = document.querySelector('.review-content');
+      console.log(content);
+      const author = document.querySelector('.review-author');
+      console.log(author);
 
-  //   for(let link of thisApp.homeLinks){
-  //     link.addEventListener('click', function(event){
-  //       const clickedElement = this;
-  //       event.preventDefault();
+      for (let dot of dots) {
+        if (dot.id == i + 1) { // +1 ??
+          console.log(dot.id);
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+        title.innerHTML = review[i].title;
+        content.innerHTML = review[i].content;
+        author.innerHTML = review[i].author;
+      }
 
-  //       /* get page id from href attribute */
-  //       const id = clickedElement.getAttribute('href').replace('#', '');
+      if (i < review.length - 1) {
+        i++;
+      } else {
+        i = 0;
+      }
+    }
+    changeTitle();
 
-  //       /* run thisApp.activatePageLinks with this id */
-  //       thisApp.activatePageLinks(id);
+    setInterval(() => {
+      changeTitle();
+    }, 3000);
 
-  //       /* change URL hash */
-  //       window.location.hash = '#/' + id;
-  //     });
-  //   }
-  // },
-
-  // activatePageLinks: function(pageId){
-  //   const thisApp = this;
-
-  //   /* add classs "active" to matching pages, remove from non-matching */
-  //   for(let page of thisApp.pages){
-  //     page.classList.toggle(classNames.pages.active, page.id == pageId);
-  //   }
-  //   /* add classs "active" to matching links, remove from non-matching */
-  //   for(let link of thisApp.homeLinks){
-  //     link.classList.toggle(
-  //       classNames.home.active,
-  //       link.getAttribute('href') == '#' + pageId
-  //     );
-  //   }
-  // },
-
-  // initCarousel() {
-  //   // eslint-disable-next-line no-unused-vars
-  //   const thisApp = this;
-  //   const review = [];
-
-  //   review[0] = {
-  //     title: 'Nulla',
-  //     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  //     author: 'Efficitur N.',
-
-  //   };
-  //   review[1] = {
-  //     title: 'Vestibulum !!!',
-  //     content: 'Aenean vitae quam suscipit, interdum arcu nec,',
-  //     author: 'Pellentesque A.',
-  //   };
-  //   review[2] = {
-  //     title: 'Lobortis ???',
-  //     content: 'Mauris maximus ipsum sed.',
-  //     author: 'Vel F.',
-  //   };
-  //   let i = 0;
-  //   // console.log(review[0]);
-  //   //console.log(review);
-
-  //   const dots = document.querySelectorAll('.carousel-dots i');
-  //   // console.log(dots);
-
-  //   function changeTitle() {
-
-  //     const title = document.querySelector('.review-title');
-  //     // console.log(title);
-  //     const content = document.querySelector('.reviev-content');
-  //     // console.log(content);
-  //     const author = document.querySelector('.review-author');
-  //     // console.log(author);
-
-  //     for (let dot of dots) {
-  //       if (dot.id == i + 1) { // +1 ??
-  //         // console.log(dot.id);
-  //         dot.classList.add('active');
-  //       } else {
-  //         dot.classList.remove('active');
-  //       }
-  //       title.innerHTML = review[i].title;
-  //       content.innerHTML = review[i].content;
-  //       author.innerHTML = review[i].author;
-  //     }
-
-  //     if (i < review.length - 1) {
-  //       i++;
-  //     } else {
-  //       i = 0;
-  //     }
-  //   }
-  //   changeTitle();
-
-  //   setInterval(() => {
-  //     changeTitle();
-  //   }, 3000);
-
-  // },
+  },
 
   init: function(){
     const thisApp = this;
@@ -246,7 +194,7 @@ const app = {
 
     thisApp.initBooking();
 
-    // thisApp.initCarousel();
+    thisApp.initCarousel();
 
     // thisApp.initHome();
   },
