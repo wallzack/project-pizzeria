@@ -114,7 +114,7 @@ const app = {
     // console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
 
- 
+
   initCarousel() {
     // eslint-disable-next-line no-unused-vars
     const thisApp = this;
@@ -138,23 +138,23 @@ const app = {
     };
     let i = 0;
     // console.log(review[0]);
-    console.log(review);
+    // console.log(review);
 
     const dots = document.querySelectorAll('.carousel-dots i');
-    console.log(dots);
+    // console.log(dots);
 
     function changeTitle() {
 
       const title = document.querySelector('.review-title');
-      console.log(title);
+      // console.log(title);
       const content = document.querySelector('.review-content');
-      console.log(content);
+      // console.log(content);
       const author = document.querySelector('.review-author');
-      console.log(author);
+      // console.log(author);
 
       for (let dot of dots) {
         if (dot.id == i + 1) { // +1 ??
-          console.log(dot.id);
+          // console.log(dot.id);
           dot.classList.add('active');
         } else {
           dot.classList.remove('active');

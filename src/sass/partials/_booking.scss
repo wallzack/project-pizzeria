@@ -59,9 +59,11 @@
 
 .rangeSlider {
   top: $base-size;
-  background: lighten($color-dark, 70%);
+  // background: lighten($color-dark, 70%);
+  background: green;
   box-shadow: none;
   height: $base-size;
+  border-radius: 10px;
 
   &__handle {
     box-shadow: none;
@@ -78,6 +80,8 @@
       height: ($base-size * 2);
       top: -6px;
       background: $color-dark;
+      border-radius: 50%;
+      
     }
 
   }
