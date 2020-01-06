@@ -209,7 +209,7 @@
       "date": "2019-01-07",
       "hour": "16:00",
       "table": 2,
-      "repeat": "fals",
+      "repeat": "false",
       "duration": 2,
       "ppl": 3,
       "starters": ["bread", "lemonWater"]
@@ -272,18 +272,18 @@
     },
     {
       "id": 6,
-      "date": "2020-01-05",
+      "date": "2020-01-07",
       "hour": "20:00",
-      "table": 1,
+      "table": [ 1 ],
       "duration": 1,
 
       "starters": []
     },
     {
       "id": 7,
-      "date": "2020-01-05",
+      "date": "2020-01-07",
       "hour": "20:00",
-      "table": 2,
+      "table": [ 2 ],
       "duration": 1,
 
       "starters": []

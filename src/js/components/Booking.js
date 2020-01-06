@@ -286,10 +286,10 @@ class Booking {
       thisBooking.updateDOM();
     });
 
-    // thisBooking.dom.submit.addEventListener('click', function(){
-    //   event.preventDefault();
-    //   thisBooking.sendBooked();
-    // });
+    thisBooking.dom.submit.addEventListener('click', function(){
+      event.preventDefault();
+      thisBooking.sendBooked();
+    });
   }
 }
 export default Booking;
