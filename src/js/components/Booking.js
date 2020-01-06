@@ -212,7 +212,7 @@ class Booking {
         console.log('parsedResponse: ', parsedResponse);
         thisBooking.makeBooked(payload.datePicked, payload.hourPicked, payload.bookHourAmount, payload.table);
 
-        // console.log(payload.datePicked);
+        console.log(payload.datePicked);
         // console.log(payload.hourPicked);
         // console.log(payload.bookHourAmount);
         // console.log(payload.table);
